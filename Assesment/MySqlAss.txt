@@ -1,83 +1,124 @@
- Write SQL query to solve the problem given below
 
-Consider three table named as city, customer and country
+mysql> select * from novel_win;
++------+------------+-------------------------+---------+----------------+
+| year | subject    | winner                  | country | category       |
++------+------------+-------------------------+---------+----------------+
+| 1970 | Literature | Aleksandr Solzhenitysym | Russia  | Linguist       |
+| 1978 | Peace      | Anwar al_sadat          | Egypt   | President      |
+| 1970 | Physiology | Barnard Katz            | Germany | Scientist      |
+| 1971 | Physics    | Dennis Gabor            | Hungary | Scientist      |
+| 1987 | Chemistry  | Donald J.Cram           | USA     | Scientist      |
+| 1971 | Chemistry  | Gerhard Herzberg        | Germany | Scientist      |
+| 1970 | Physics    | Hannes Alfven           | Sweden  | Scientist      |
+| 1987 | Chemistry  | Jean-Marie lehn         | France  | Scientist      |
+| 1987 | Physics    | Jhonnes Georg Bednorz   | Germany | Scientist      |
+| 1987 | Literature | Joseph Brodsky          | Russia  | Linguist       |
+| 1970 | Physiology | Julius Axelrod          | USA     | Scientist      |
+| 1994 | Literature | Kenzaburo oe            | Japan   | Linguist       |
+| 1970 | Physics    | Louis Neel              | France  | Scientist      |
+| 1970 | Chemistry  | Luis Federico leloir    | France  | Scientist      |
+| 1978 | Peace      | Menachem begin          | Israel  | Prime-minister |
+| 1971 | Literature | Pablo neruda            | Chile   | Linguist       |
+| 1970 | Economics  | Paul Samuelson          | USA     | Economist      |
+| 1994 | Economics  | Reinhard Selten         | Germany | Economist      |
+| 1987 | Economics  | Robert Solow            | USA     | Economist      |
+| 1971 | Economics  | Simon Kuznets           | Russia  | Economist      |
+| 1987 | Physiology | Susumu Tonegawa         | Japan   | Scientist      |
+| 1970 | Physiology | ulf von Euler           | Sweden  | Scientist      |
+| 1971 | Peace      | Willy Brandt            | Germany | Chancellor     |
+| 1994 | Peace      | Yitzhak Rabin           | Israel  | Prime-minister |
++------+------------+-------------------------+---------+----------------+
+24 rows in set (0.06 sec)
 
-mysql> select * from city;
-+----+-------------+-----------+-------------+------------+
-| id | city_name   | lat       | longi       | country_id |
-+----+-------------+-----------+-------------+------------+
-|  1 | Berlin      | 52.520008 |   13.404954 |          1 |
-|  2 | Belgrade    | 44.787197 |   20.457273 |          2 |
-|  3 | Zagreb      | 45.815399 |   15.966568 |          3 |
-|  4 | New York    |  40.73061 |  -73.935242 |          4 |
-|  5 | Los Angeles | 34.052235 | -118.243683 |          4 |
-|  6 | Warsaw      | 52.237049 |   21.017532 |          5 |
-+----+-------------+-----------+-------------+------------+
+Q1.Write sql query to find the nobel prize winners of the year 1970. Return year,subject
+and winner
 
-mysql> select * from customer_table;
-+----+---------------+---------+---------------------+----------------+---------------------+
-| id | customer_name | city_id | customer_address    | next_call_date | ts_inserted         |
-+----+---------------+---------+---------------------+----------------+---------------------+
-|  1 | Jewelry store |       4 | long Street 120     | 2020-01-21     | 2020-01-09 14:01:20 |
-|  2 | Bakery        |       1 | Kurfurstendamn 25   | 2020-02-21     | 2020-01-09 17:52:15 |
-|  3 | Cafe          |       1 | Tauentzienstrabe 44 | 2020-01-21     | 2020-01-10 08:02:49 |
-|  4 | Restaurant    |       3 | Ulica lipa 15       | 2020-01-21     | 2020-01-10 09:20:21 |
-+----+---------------+---------+---------------------+----------------+---------------------+
+mysql> select year,subject,winner from novel_win where year=1970;
++------+------------+-------------------------+
+| year | subject    | winner                  |
++------+------------+-------------------------+
+| 1970 | Literature | Aleksandr Solzhenitysym |
+| 1970 | Physiology | Barnard Katz            |
+| 1970 | Physics    | Hannes Alfven           |
+| 1970 | Physiology | Julius Axelrod          |
+| 1970 | Physics    | Louis Neel              |
+| 1970 | Chemistry  | Luis Federico leloir    |
+| 1970 | Economics  | Paul Samuelson          |
+| 1970 | Physiology | ulf von Euler           |
++------+------------+-------------------------+
+8 rows in set (0.00 sec)
 
-mysql> select * from country;
-+----+-------------------------+-------------------------+--------------+
-| id | country_name            | country_name_eng        | country_code |
-+----+-------------------------+-------------------------+--------------+
-|  1 | Deutschland             | Germany                 | DEU          |
-|  2 | Serbija                 | Serbia                  | SRB          |
-|  3 | Hrvatska                | Croatia                 | HRV          |
-|  4 | United State Of America | United State Of America | USA          |
-|  5 | Polska                  | Poland                  | POL          |
-|  6 | Espana                  | Spain                   | ESP          |
-|  7 | Rossiya                 | Russia                  | RUS          |
-+----+-------------------------+-------------------------+--------------+
+Q2.Write sql query to find the nobel prize winners in chemistry between the years 1965
+and 1975. Begin and end values are includedReturn year, subject, winner and
+country
 
-Task : 1 (join multiple tables using left join)
-List all Countries and customers related to these countries.
-For each country displaying its name in English, the name of the city customer is located in as
-well as the name of the customer.
-Return even countries without related cities and customers.
+mysql> select year,subject,winner,country from novel_win where year between 1965 and 1975 and
+subject='chemistry';
++------+-----------+----------------------+---------+
+| year | subject   | winner               | country |
++------+-----------+----------------------+---------+
+| 1971 | Chemistry | Gerhard Herzberg     | Germany |
+| 1970 | Chemistry | Luis Federico leloir | France  |
++------+-----------+----------------------+---------+
 
-mysql> select country.id,country.country_name,city.city_name,customer_table.customer_name
-    -> from country
-    -> left join city
-    -> on country.id=city.country_id
-    -> left join customer_table
-    ->  on city.id=customer_table.city_id;
-+----+-------------------------+-------------+---------------+
-| id | country_name            | city_name   | customer_name |
-+----+-------------------------+-------------+---------------+
-|  1 | Deutschland             | Berlin      | Cafe          |
-|  1 | Deutschland             | Berlin      | Bakery        |
-|  2 | Serbija                 | Belgrade    | NULL          |
-|  3 | Hrvatska                | Zagreb      | Restaurant    |
-|  4 | United State Of America | New York    | Jewelry store |
-|  4 | United State Of America | Los Angeles | NULL          |
-|  5 | Polska                  | Warsaw      | NULL          |
-|  6 | Espana                  | NULL        | NULL          |
-|  7 | Rossiya                 | NULL        | NULL          |
-+----+-------------------------+-------------+---------------+
+Q3.Write sql query to retrieve the details of the winners whose first name matches with
+the string ‘Louis’. Return year,subject,winner,country
 
-Task : 2 (join multiple tables using both left and inner join)
-Return the list of all countries that have pairs(exclude countries which are not referenced by any
-city). For such pairs return all customers.
-Return even pairs of not having a single customer
+mysql> select year,subject,winner,country from novel_win where winner like 'louis%';
++------+---------+------------+---------+
+| year | subject | winner     | country |
++------+---------+------------+---------+
+| 1970 | Physics | Louis Neel | France  |
++------+---------+------------+---------+
+1 row in set (0.00 sec)
 
-mysql> select country.id,country.country_name,city.city_name,customer_table.customer_name from country
-inner join city  on country.id=city.country_id left join customer_table  on city.id=customer_table.city_id;
-+----+-------------------------+-------------+---------------+
-| id | country_name            | city_name   | customer_name |
-+----+-------------------------+-------------+---------------+
-|  1 | Deutschland             | Berlin      | Cafe          |
-|  1 | Deutschland             | Berlin      | Bakery        |
-|  2 | Serbija                 | Belgrade    | NULL          |
-|  3 | Hrvatska                | Zagreb      | Restaurant    |
-|  4 | United State Of America | New York    | Jewelry store |
-|  4 | United State Of America | Los Angeles | NULL          |
-|  5 | Polska                  | Warsaw      | NULL          |
-+----+-------------------------+-------------+---------------+
+Q4.Write sql query to find Nobel prize winners for the subject that does not begin with
+the letter ‘P’. Order the result by year, descending and winner in ascending
+mysql> select year,subject,winner,country from novel_win where subject like 'p%' order by year desc;
++------+------------+-----------------------+---------+
+| year | subject    | winner                | country |
++------+------------+-----------------------+---------+
+| 1994 | Peace      | Yitzhak Rabin         | Israel  |
+| 1987 | Physics    | Jhonnes Georg Bednorz | Germany |
+| 1987 | Physiology | Susumu Tonegawa       | Japan   |
+| 1978 | Peace      | Anwar al_sadat        | Egypt   |
+| 1978 | Peace      | Menachem begin        | Israel  |
+| 1971 | Physics    | Dennis Gabor          | Hungary |
+| 1971 | Peace      | Willy Brandt          | Germany |
+| 1970 | Physiology | Barnard Katz          | Germany |
+| 1970 | Physics    | Hannes Alfven         | Sweden  |
+| 1970 | Physiology | Julius Axelrod        | USA     |
+| 1970 | Physics    | Louis Neel            | France  |
+| 1970 | Physiology | ulf von Euler         | Sweden  |
++------+------------+-----------------------+---------+
+
+mysql> select year,subject,winner,country from novel_win where subject like 'p%' order by year asc;
++------+------------+-----------------------+---------+
+| year | subject    | winner                | country |
++------+------------+-----------------------+---------+
+| 1970 | Physiology | Barnard Katz          | Germany |
+| 1970 | Physics    | Hannes Alfven         | Sweden  |
+| 1970 | Physiology | Julius Axelrod        | USA     |
+| 1970 | Physics    | Louis Neel            | France  |
+| 1970 | Physiology | ulf von Euler         | Sweden  |
+| 1971 | Physics    | Dennis Gabor          | Hungary |
+| 1971 | Peace      | Willy Brandt          | Germany |
+| 1978 | Peace      | Anwar al_sadat        | Egypt   |
+| 1978 | Peace      | Menachem begin        | Israel  |
+| 1987 | Physics    | Jhonnes Georg Bednorz | Germany |
+| 1987 | Physiology | Susumu Tonegawa       | Japan   |
+| 1994 | Peace      | Yitzhak Rabin         | Israel  |
++------+------------+-----------------------+---------+
+12 rows in set (0.00 sec)
+
+Q5.Write sql query to find the details of 1970 Nobel prize winners. Order the result by
+subject, ascending except for ‘Chemistry’ and ‘Economics’ which will come at the
+end of the result set. Return year, subject, winner , country and category.
+
+mysql> select year,subject,winner,country from novel_win where subject in('chemistry','Economics')and year=1970;
++------+-----------+----------------------+---------+
+| year | subject   | winner               | country |
++------+-----------+----------------------+---------+
+| 1970 | Chemistry | Luis Federico leloir | France  |
+| 1970 | Economics | Paul Samuelson       | USA     |
++------+-----------+----------------------+---------+
