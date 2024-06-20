@@ -1,0 +1,205 @@
+
+Q1.What do you understand By Database ?
+->A database is an electronically stored, systematic collection of data. It can contain any type of data,
+ including words, numbers, images, videos, and files. You can use software called a database management system
+  (DBMS) to store, retrieve, and edit data.
+
+Q2. What is Normalization?
+->1.Normalization is the process of organizing the data in the database.
+2.Normalization is used to minimize the redundancy from a relation or set of relations. It is also used to eliminate
+undesirable characteristics like Insertion, Update, and Deletion Anomalies.
+3.Normalization divides the larger table into smaller and links them using relationships.
+4.The normal form is used to reduce redundancy from the database table.
+Types Of Normalization:
+1.First Normal Form (1NF): This is the most basic level of normalization. In 1NF, each table cell should contain only
+a single value, and each column should have a unique name. The first normal form helps to eliminate duplicate
+ data and simplify queries.
+2.Second Normal Form (2NF): 2NF eliminates redundant data by requiring that each non-key attribute be dependent on
+the primary key. This means that each column should be directly related to the primary key, and not to other columns.
+3.Third Normal Form (3NF): 3NF builds on 2NF by requiring that all non-key attributes are independent of each other.
+This means that each column should be directly related to the primary key, and not to any other columns in the
+same table.
+4.Boyce-Codd Normal Form (BCNF): BCNF is a stricter form of 3NF that ensures that each determinant in a table is
+a candidate key. In other words, BCNF ensures that each non-key attribute is dependent only on the candidate key.
+Fourth Normal Form (4NF): 4NF is a further refinement of BCNF that ensures that a table does not contain any
+multi-valued dependencies.
+5.Fifth Normal Form (5NF): 5NF is the highest level of normalization and involves decomposing a table into smaller
+tables to remove data redundancy and improve data integrity.
+
+Q3. What is Difference between DBMS and RDBMS?
+->
+DBMS
+1)	DBMS applications store data as file.
+2)	In DBMS, data is generally stored in either a hierarchical form or a navigational form.
+3)	Normalization is not present in DBMS.
+4) DBMS does not apply any security with regards to data manipulation.
+5) DBMS uses file system to store data, so there will be no relation between the tables.
+
+RDBMS:
+1)RDBMS applications store data in a tabular form.
+2)In RDBMS, the tables have an identifier called primary key and the data values are stored in the form of tables.
+3)Normalization is present in RDBMS
+4) RDBMS defines the integrity constraint for the purpose of ACID (Atomocity, Consistency, Isolation and Durability)
+property.
+5)in RDBMS, data values are stored in the form of tables, so a relationship between these data values will
+ be stored in the form of a table as well.
+
+
+
+Q4.What is MF Cod Rule of RDBMS Systems?
+->Codd’s rules are proposed by a computer scientist named Dr. Edgar F. Codd and he also invent the relational model
+for database management. These rules are made to ensure data integrity, consistency, and usability. This set of
+rules basically signifies the characteristics and requirements of a relational database management system (RDBMS).
+In this article, we will learn about various Codd’s rules.
+
+Codd’s Rules in DBMS
+Rule 1: The Information Rule
+All information, whether it is user information or metadata, that is stored in a database must be entered as a value
+in a cell of a table. It is said that everything within the database is organized in a table layout.
+
+Rule 2: The Guaranteed Access Rule
+Each data element is guaranteed to be accessible logically with a combination of the table name, primary key
+(row value), and attribute name (column value).
+
+Rule 3: Systematic Treatment of NULL Values
+Every Null value in a database must be given a systematic and uniform treatment.
+
+Rule 4: Active Online Catalog Rule
+The database catalog, which contains metadata about the database, must be stored and accessed using the same
+relational database management system.
+
+Rule 5: The Comprehensive Data Sublanguage Rule
+A crucial component of any efficient database system is its ability to offer an easily understandable data
+ manipulation language (DML) that facilitates defining, querying, and modifying information within the database.
+
+Rule 6: The View Updating Rule
+All views that are theoretically updatable must also be updatable by the system.
+
+Rule 7: High-level Insert, Update, and Delete
+A successful database system must possess the feature of facilitating high-level insertions, updates, and deletions
+ that can grant users the ability to conduct these operations with ease through a single query.
+
+Rule 8: Physical Data Independence
+Application programs and activities should remain unaffected when changes are made to the physical storage structures
+or methods.
+
+Rule 9: Logical Data Independence
+Application programs and activities should remain unaffected when changes are made to the logical structure of the
+data, such as adding or modifying tables.
+
+Rule 10: Integrity Independence
+Integrity constraints should be specified separately from application programs and stored in the catalog.
+They should be automatically enforced by the database system.
+
+Rule 11: Distribution Independence
+The distribution of data across multiple locations should be invisible to users, and the database system
+should handle the distribution transparently.
+
+Rule 12: Non-Subversion Rule
+If the interface of the system is providing access to low-level records, then the interface must not be able
+ to damage the system and bypass security and integrity constraints.
+
+
+
+Q5.What do you understand By Data Redundancy?
+->Data redundancy occurs when the same piece of data exists in multiple places, whereas data inconsistency is when
+the same data exists in different formats in multiple tables. Unfortunately,data redundancy can cause data
+inconsistency, which can provide a company with unreliable and/or meaningless information.
+1. Insertion Anomaly:
+Insertion anomaly arises when you are trying to insert some data into the database, but you are not able to
+insert it.
+Example: If you want to add the details of the student in the above table, then you must know the details of the
+department; otherwise, you will not be able to add the details because student details are dependent on department
+ details.
+
+2. Deletion Anomaly:
+Deletion anomaly arises when you delete some data from the database, but some unrelated data is also deleted;
+ that is, there will be a loss of data due to deletion anomaly.
+
+Example: If we want to delete the student detail, which has student_id 2, we will also lose the unrelated data,
+ i.e., department_id 102, from the above table.
+
+3. Updating Anomaly:
+An update anomaly arises when you update some data in the database, but the data is partially updated,
+which causes data inconsistency.
+
+Example: If we want to update the details of dept_head from Jaspreet Kaur to Ankit Goyal for Dept_id 104,
+ then we have to update it everywhere else; otherwise, the data will get partially updated, which causes data
+  inconsistency.
+
+Q6. What is DDL Interpreter?
+->The DDL Interpreter is a component in a Database Management System (DBMS) that processes Data Definition Language
+(DDL) statements. Here are the key points about it:
+
+Purpose: The DDL Interpreter handles schema-level operations, defining and modifying the structure of database
+ objects (e.g., tables, indexes, views, stored procedures, functions, and triggers).
+DDL Commands:
+CREATE: Used to create databases and their objects.
+ALTER: Modifies the existing database structure.
+DROP: Deletes objects from the database.
+TRUNCATE: Removes all records from a table.
+COMMENT: Adds comments to the data dictionary.
+RENAME: Renames an object.
+
+
+
+Q7. What is DML Compiler in SQL?
+-> DML (Data Manipulation Language) is a type of SQL command used to manipulate data in a database. It inserts,
+ updates, and deletes data from a database table. Examples of DML statements include INSERT, UPDATE, and DELETE.
+
+Types of DML Statements
+INSERT: Used to add new records to a database table.
+UPDATE: Used to modify existing records in a database table.
+DELETE: Used to delete existing records from a database table.
+MERGE: Used to combine data from two or more tables into one.
+SELECT: Used to retrieve data from one or more tables in a database.
+CALL: Used to call a stored procedure or function.
+
+
+
+Q8.What is SQL Key Constraints writing an Example of SQL Key Constraints
+->SQL constraints are used to specify rules for the data in a table.
+Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability
+ of the data in the table. If there is any violation between the constraint and the data action, the action is
+ aborted.
+Constraints can be column level or table level. Column level constraints apply to a column, and table level
+constraints apply to the whole table.
+The following constraints are commonly used in SQL:
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+Q9.What is save Point? How to create a save Point write a Query?
+-> A SAVEPOINT is a point in a transaction in which you can roll the transaction back to a certain point without
+rolling back the entire transaction.
+
+SAVEPOINT SP1;
+//Savepoint created.
+DELETE FROM Student WHERE AGE = 20;
+//deleted
+SAVEPOINT SP2;
+//Savepoint created.
+
+Q10.What is trigger and how to create a Trigger in SQL?
+->A trigger is a stored procedure in a database that automatically invokes whenever a special event in the database
+ occurs. For example, a trigger can be invoked when a row is inserted into a specified table or when specific table
+columns are updated. In simple words, a trigger is a collection of SQL statements with particular names that are
+stored in system memory. It belongs to a specific class of stored procedures that are automatically invoked in
+response to database server events. Every trigger has a table attached to it.
+
+create trigger [trigger_name]
+
+[before | after]
+
+{insert | update | delete}
+
+on [table_name]
+
+[for each row]
+
+[trigger_body]

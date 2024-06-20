@@ -1,0 +1,140 @@
+Create table given below: Employee and IncentiveTable
+
+Table Name:Employee
+
++------------+------------+-----------+---------+---------------------+------------+
+| Employe_id | First_Name | Last_name | Salary  | Joining_Date        | Department |
++------------+------------+-----------+---------+---------------------+------------+
+|          1 | Jhon       | Abraham   | 1000000 | 2013-01-01 12:00:00 | Banking    |
+|          2 | michael    | clarke    |  800000 | 2013-01-01 12:00:00 | Insurance  |
+|          3 | Roy        | Thomas    |  700000 | 2013-02-01 12:00:00 | Banking    |
+|          4 | Tom        | josh      |  600000 | 2013-02-01 12:00:00 | Insurance  |
+|          5 | Jerry      | pinto     |  650000 | 2013-02-01 12:00:00 | Insurance  |
+|          6 | philip     | mathew    |  750000 | 2013-01-01 12:00:00 | Services   |
+|          7 | Testname   | 123       |  650000 | 2013-01-01 12:00:00 | services   |
+|          8 | Testname2  | lname2    |  600000 | 2013-02-01 12:00:00 | Insurance  |
++------------+------------+-----------+---------+---------------------+------------+
+
+Table Name: IncentiveTable
+
++-----------------+----------------+------------------+
+| Employee_Ref_id | Insentive_Date | Insentive_amount |
++-----------------+----------------+------------------+
+|               1 | 2013-02-01     |             5000 |
+|               2 | 2013-02-01     |             3000 |
+|               3 | 2013-02-01     |             4000 |
+|               1 | 2013-01-01     |             4500 |
+|               2 | 2013-01-01     |             3500 |
++-----------------+----------------+------------------+
+
+Q1.Get First_Name from employee table using Tom name “Employee Name”.
+
+select First_Name as Employee_Name from employee where Employe_id=4;
++---------------+
+| Employee_Name |
++---------------+
+| Tom           |
++---------------+
+
+Q2.Get FIRST_NAME, Joining Date, and Salary from employee table.
+
+ select First_Name,Joining_Date,Salary from employee;
++------------+---------------------+---------+
+| First_name | Joining_Date        | Salary  |
++------------+---------------------+---------+
+| Jhon       | 2013-01-01 12:00:00 | 1000000 |
+| michael    | 2013-01-01 12:00:00 |  800000 |
+| Roy        | 2013-02-01 12:00:00 |  700000 |
+| Tom        | 2013-02-01 12:00:00 |  600000 |
+| Jerry      | 2013-02-01 12:00:00 |  650000 |
+| philip     | 2013-01-01 12:00:00 |  750000 |
+| Testname   | 2013-01-01 12:00:00 |  650000 |
+| Testname2  | 2013-02-01 12:00:00 |  600000 |
++------------+---------------------+---------+
+
+Q3.Get all employee details from the employee table order by First_Name
+Ascending and Salary descending?
+
+mysql> select * from employee order by First_name ;
++------------+------------+-----------+---------+---------------------+------------+
+| Employe_id | First_Name | Last_name | Salary  | Joining_Date        | Department |
++------------+------------+-----------+---------+---------------------+------------+
+|          5 | Jerry      | pinto     |  650000 | 2013-02-01 12:00:00 | Insurance  |
+|          1 | Jhon       | Abraham   | 1000000 | 2013-01-01 12:00:00 | Banking    |
+|          2 | michael    | clarke    |  800000 | 2013-01-01 12:00:00 | Insurance  |
+|          6 | philip     | mathew    |  750000 | 2013-01-01 12:00:00 | Services   |
+|          3 | Roy        | Thomas    |  700000 | 2013-02-01 12:00:00 | Banking    |
+|          7 | Testname   | 123       |  650000 | 2013-01-01 12:00:00 | services   |
+|          8 | Testname2  | lname2    |  600000 | 2013-02-01 12:00:00 | Insurance  |
+|          4 | Tom        | josh      |  600000 | 2013-02-01 12:00:00 | Insurance  |
++------------+------------+-----------+---------+---------------------+------------+
+
+mysql> select * from employee order by Salary Desc;
++------------+------------+-----------+---------+---------------------+------------+
+| Employe_id | First_Name | Last_name | Salary  | Joining_Date        | Department |
++------------+------------+-----------+---------+---------------------+------------+
+|          1 | Jhon       | Abraham   | 1000000 | 2013-01-01 12:00:00 | Banking    |
+|          2 | michael    | clarke    |  800000 | 2013-01-01 12:00:00 | Insurance  |
+|          6 | philip     | mathew    |  750000 | 2013-01-01 12:00:00 | Services   |
+|          3 | Roy        | Thomas    |  700000 | 2013-02-01 12:00:00 | Banking    |
+|          5 | Jerry      | pinto     |  650000 | 2013-02-01 12:00:00 | Insurance  |
+|          7 | Testname   | 123       |  650000 | 2013-01-01 12:00:00 | services   |
+|          4 | Tom        | josh      |  600000 | 2013-02-01 12:00:00 | Insurance  |
+|          8 | Testname2  | lname2    |  600000 | 2013-02-01 12:00:00 | Insurance  |
++------------+------------+-----------+---------+---------------------+------------+
+
+Q4.Get employee details from employee table whose first name contains ‘J’.
+
+
+mysql> select * from employee where First_Name like 'J%';
++------------+------------+-----------+---------+---------------------+------------+
+| Employe_id | First_Name | Last_name | Salary  | Joining_Date        | Department |
++------------+------------+-----------+---------+---------------------+------------+
+|          1 | Jhon       | Abraham   | 1000000 | 2013-01-01 12:00:00 | Banking    |
+|          5 | Jerry      | pinto     |  650000 | 2013-02-01 12:00:00 | Insurance  |
++------------+------------+-----------+---------+---------------------+------------+
+
+Q5.Get department wise maximum salary from employee table order by salary ascending ?
+
+mysql> select Department, max(Salary) as maxsalary from employee group by Department order by maxsalary asc;
++------------+-----------+
+| Department | maxsalary |
++------------+-----------+
+| Services   |    750000 |
+| Insurance  |    800000 |
+| Banking    |   1000000 |
++------------+-----------+
+
+Q6.  Select first_name, incentive amount from employee and incentives table
+forthose employees who have incentives and incentive amount greater than
+3000
+
+mysql> select employee.First_Name,incentivetable.Insentive_amount from employee inner join incentivetable
+ on employee.Employe_id=incentivetable.Employee_Ref_id having Insentive_amount>3000;
++------------+------------------+
+| First_Name | Insentive_amount |
++------------+------------------+
+| Jhon       |             5000 |
+| Roy        |             4000 |
+| Jhon       |             4500 |
+| michael    |             3500 |
++------------+------------------+
+
+Q7. Create After Insert trigger on Employee table which insert records in viewtable 
+
+ delimiter //
+create trigger t1 after insert on employee for each row
+insert into viewtable values(new.Employe_id,new.First_Name ,new.Last_name,new.Salary,new.Joining_Date,new.Department);
+end;
+ end //
+ delimiter ;
+ 
+mysql>drop trigger t1;
+mysql> insert into employee values(9,"kiran","Thakre",12000,"2012-07-18 01:00","Banking");
+mysql> select * from employee;
+mysql> select * from viewtable;
++------------+------------+-----------+--------+---------------------+------------+
+| Employe_id | First_name | Last_name | Salary | Joining_Date        | Department |
++------------+------------+-----------+--------+---------------------+------------+
+|          9 | kiran      | Thakre    |  12000 | 2012-07-18 01:00:00 | Banking    |
++------------+------------+-----------+--------+---------------------+------------+

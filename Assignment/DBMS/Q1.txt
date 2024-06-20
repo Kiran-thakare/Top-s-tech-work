@@ -1,0 +1,23 @@
+ Q1. Create Table Name : Student and Exam 
+ 
+Table Name : Student
++--------+---------+--------------------+
+| rollno | Name    | branch             |
++--------+---------+--------------------+
+|      1 | jay     | computer Science   |
+|      2 | Shuhani | Electronic and com |
+|      3 | Kirti   | Electronic and com |
++--------+---------+--------------------+
+
+Table Name: Exam
+
++--------+--------+-------+--------+
+| rollno | s_code | marks | p_code |
++--------+--------+-------+--------+
+|      1 | CS11   |    50 | CS     |
+|      1 | CS12   |    60 | CS     |
+|      2 | EC101  |    66 | EC     |
+|      2 | EC102  |    70 | EC     |
+|      2 | EC101  |    45 | EC     |
+|      2 | EC102  |    50 | EC     |
++--------+--------+-------+--------+
