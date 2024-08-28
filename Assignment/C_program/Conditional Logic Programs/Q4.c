@@ -1,5 +1,5 @@
 //WAP to make simple calculator (operation include Addition, Subtraction, Multiplication, Division, modulo)
-// using conditional statement
+//using conditional statement
 #include<stdio.h>
 int main(){
 
