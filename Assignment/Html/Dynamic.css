@@ -1,0 +1,57 @@
+/* General Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+
+/* Basic Button Style */
+
+.dynamic-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+/* Hover State */
+
+.dynamic-button:hover {
+    background-color: #1976D2;
+    /* Darker blue on hover */
+}
+
+
+/* Focus State */
+
+.dynamic-button:focus {
+    background-color: #0D47A1;
+    /* Even darker blue on focus */
+    outline: none;
+    transform: scale(1.1);
+    /* Slightly enlarge the button */
+}
+
+
+/* Active (Clicked) State */
+
+.dynamic-button:active {
+    background-color: #0D47A1;
+    transform: scale(1.05);
+    /* Reduce size slightly on click */
+}

@@ -1,0 +1,45 @@
+/* Unvisited link */
+
+a:link {
+    color: #00539C;
+    /* Default color */
+    text-decoration: none;
+    /* Remove underline */
+    font-weight: bold;
+}
+
+
+/* Visited link */
+
+a:visited {
+    color: #6A1B9A;
+    /* Color for visited links */
+    text-decoration: none;
+}
+
+
+/* Mouse hover link */
+
+a:hover {
+    color: #D32F2F;
+    /* Color when hovering */
+    text-decoration: underline;
+    /* Add underline when hovered */
+}
+
+
+/* Active link (clicked) */
+
+a:active {
+    color: #FF5722;
+    /* Color when the link is clicked */
+    text-decoration: none;
+}
+
+
+/* Focused link (keyboard focus) */
+
+a:focus {
+    outline: 2px dashed #FFEB3B;
+    /* Add an outline for focus state */
+}

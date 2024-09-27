@@ -1,0 +1,46 @@
+1 Web Page:
+A web page is a fundamental building block of the web. It’s a structured document that can be displayed in a web browser (such as Firefox, Google Chrome, or Safari). When you visit a website, what you’re actually viewing are individual web pages.
+Each web page is typically written in HTML (Hypertext Markup Language). HTML provides the structure and content of the page. It defines elements like headings, paragraphs, images, links, and more.
+
+
+2.Website:
+A website is a collection of related web pages grouped together under a common domain name (e.g., www.example.com). These pages are interconnected and share a common theme or purpose.
+Think of a website as a cohesive unit—a place where you find information, services, or entertainment. It can be anything from a personal blog to a large e-commerce platform.
+The combination of all the web pages hosted on the same domain constitutes a website1.
+Web Browser:
+
+3. Web Server:
+A web server is a computer (or a cluster of computers) that hosts websites on the Internet. It responds to requests from web browsers by serving the requested web pages.
+When you access a website, your browser communicates with the web server hosting that site. The server sends back the necessary files (HTML, CSS, images, etc.) to display the web page in your browser.
+
+4.HTML (Hypertext Markup Language):
+HTML is the backbone of the web. It’s a markup language used to create the structure and content of web pages.
+Developers use HTML tags (such as <p>, <h1>, <img>, etc.) to define elements like paragraphs, headings, images, and links. Browsers interpret these tags to display the page.
+Here’s a simple example of HTML:
+HTML
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+  </head>
+  <body>
+    <h1>Welcome to My Site</h1>
+    <p>This is my first web page!</p>
+  </body>
+</html>
+
+5.CSS (Cascading Style Sheets):
+CSS complements HTML by controlling the visual presentation of web pages. It defines how elements should look—colors, fonts, spacing, layout, etc.
+Developers write CSS rules to style specific HTML elements. These rules can be embedded within the HTML file or placed in separate CSS files.
+Example of CSS:
+CSS
+
+h1 {
+  color: #0074D9;
+  font-family: Arial, sans-serif;
+}
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Registration</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Individual Registration</h2>
+
+        <form action="#">
+            <!-- User Particulars Section -->
+            <fieldset>
+                <legend>User Particulars</legend>
+                <label for="login-id">* Login ID</label>
+                <input type="text" id="login-id" required>
+
+                <label for="password">* Password</label>
+                <input type="password" id="password" required>
+
+                <label for="confirm-password">* Confirm Password</label>
+                <input type="password" id="confirm-password" required>
+            </fieldset>
+
+            <!-- Personal Particulars Section -->
+            <fieldset>
+                <legend>Personal Particulars</legend>
+                <label for="salutation">* Salutation</label>
+                <select id="salutation">
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Mrs">Mrs</option>
+                </select>
+
+                <label for="first-name">* First Name</label>
+                <input type="text" id="first-name" required>
+
+                <label for="middle-name">Middle Name</label>
+                <input type="text" id="middle-name">
+
+                <label for="last-name">* Last Name</label>
+                <input type="text" id="last-name" required>
+
+                <label for="resident-status">* Resident Status</label>
+                <select id="resident-status">
+                    <option value="Resident">Resident</option>
+                    <option value="Non-Resident">Non-Resident</option>
+                </select>
+
+                <label for="email">* Email-ID</label>
+                <input type="email" id="email" required>
+
+                <label for="country">* Country</label>
+                <select id="country">
+                    <option value="USA">USA</option>
+                    <option value="India">India</option>
+                    <option value="UK">UK</option>
+                </select>
+
+                <label for="mobile-number">* Mobile Number</label>
+                <input type="text" id="mobile-number" required>
+            </fieldset>
+
+            <!-- Account Particulars Section -->
+            <fieldset>
+                <legend>Account Particulars</legend>
+                <label for="account-no">* 15 Digit Account No</label>
+                <input type="text" id="account-no" required>
+
+                <label for="nick-name">* Nick Name</label>
+                <input type="text" id="nick-name">
+
+                <label for="fund-transfer">* Fund Transfer</label>
+                <select id="fund-transfer">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </fieldset>
+
+            <!-- Declaration Section -->
+            <div class="declaration">
+                <strong>DECLARATION</strong>
+                <p>
+                    I have read, understood and hereby agree to the Terms and Conditions in respect of all products and channels. I confirm that all accounts under this login name are operated singly and in case of joint account operated by either or survivor/anyone or survivor(s)
+                    under his/her joint name respectively.
+                </p>
+            </div>
+
+            <!-- Submit and Reset Buttons -->
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
