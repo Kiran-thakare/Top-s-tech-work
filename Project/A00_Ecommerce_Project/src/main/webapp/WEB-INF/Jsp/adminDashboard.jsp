@@ -209,8 +209,7 @@
 								<div class="navbar-profile">
 									<img class="img-xs rounded-circle"
 										src="assets/images/faces/face15.jpg" alt="">
-									<p class="mb-0 d-none d-sm-block navbar-profile-name">Henry
-										Klein</p>
+									<p class="mb-0 d-none d-sm-block navbar-profile-name">Admin</p>
 									<i class="mdi mdi-menu-down d-none d-sm-block"></i>
 								</div>
 						</a>
@@ -254,7 +253,7 @@
 			<!-- partial -->
 			<div class="main-panel">
 				<div class="content-wrapper">
-				
+
 					<div class="row">
 						<div class="col-xl-3 col-sm-6 grid-margin stretch-card">
 							<div class="card">

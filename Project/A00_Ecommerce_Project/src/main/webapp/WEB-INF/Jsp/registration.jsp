@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,23 +74,25 @@
 							<h2>Registration Form</h2>
 						</div>
 
-						<form action="#" method="post">
+						<form action="addUser" method="post">
 							<div class="row">
+								<input type="hidden" value="${user.id}" name="id">
 								<div class="col-md-6 mb-3">
-									<input type="text" class="form-control" id="uname" value=""
-										placeholder="Username" required>
+									<input type="text" class="form-control" id="uname" name="name"
+										value="${user.name }" placeholder="Username" required>
 								</div>
 								<div class="col-md-6 mb-3">
-									<input type="text" class="form-control" id="email" value=""
-										placeholder="Email" required>
+									<input type="text" class="form-control" id="email" name="email"
+										value="${user.email }" placeholder="Email" required>
 								</div>
 								<div class="col-12 mb-3">
 									<input type="number" class="form-control" id="phone"
-										placeholder="Phone Number" value="">
+										name="phone" placeholder="Phone Number" value="${user.phone}">
 								</div>
 								<div class="col-12 mb-3">
 									<input type="password" class="form-control" id="password"
-										placeholder="Password" value="">
+										placeholder="Password" value="${user.password}"
+										name="password">
 								</div>
 								<div class="col-12 mb-3">
 									<input type="password" class="form-control" id="cpassword"

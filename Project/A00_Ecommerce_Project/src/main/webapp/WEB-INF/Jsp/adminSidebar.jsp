@@ -26,8 +26,8 @@
 								class="count bg-success"></span>
 						</div>
 						<div class="profile-name">
-							<h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-							<span>Gold Member</span>
+							<h5 class="mb-0 font-weight-normal">Admin</h5>
+							<span>All Access</span>
 						</div>
 					</div>
 					<a href="#" id="profile-dropdown" data-toggle="dropdown"><i
@@ -81,7 +81,7 @@
 				</span> <span class="menu-title">Dashboard</span>
 			</a></li>
 
-			<li class="nav-item menu-items"><a class="nav-link" href="users">
+			<li class="nav-item menu-items"><a class="nav-link" href="user">
 					<span class="menu-icon"> <i class="mdi mdi-playlist-play"></i>
 				</span> <span class="menu-title">Users</span>
 			</a></li>

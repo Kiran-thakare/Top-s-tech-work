@@ -21,28 +21,14 @@ public class AdminController {
 		return "adminDashboard";
 
 	}
+
 	
-	@GetMapping("/users")
-	public String users() {
-		return "users";
-		
-	}
-	
-	
-	
-	@GetMapping("/product")
-	public String Product() {
-		return "product";
-		
-	}
-	
+
 	@GetMapping("/order")
 	public String Order() {
 		return "order";
-		
+
 	}
-	
-	
 
 	@PostMapping("/adminLogin")
 	public String processAdminLogin(@RequestParam String username, @RequestParam String password) {
