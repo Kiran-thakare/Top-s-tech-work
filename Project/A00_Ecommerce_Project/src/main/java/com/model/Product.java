@@ -19,7 +19,8 @@ public class Product {
 	private String productName;
 	private int productQty;
 	private double productPrice;
-
+	
+	
 	private String productImage;
 
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
@@ -27,6 +28,9 @@ public class Product {
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Cart> carts;
+
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<OrderItems> items;
 
 	public int getPid() {
 		return pid;
@@ -83,5 +87,23 @@ public class Product {
 	public void setCarts(List<Cart> carts) {
 		this.carts = carts;
 	}
+
+	public List<OrderItems> getItems() {
+		return items;
+	}
+
+	public void setItems(List<OrderItems> items) {
+		this.items = items;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [pid=" + pid + ", productName=" + productName + ", productQty=" + productQty + ", productPrice="
+				+ productPrice + ", productImage=" + productImage + ", category=" + category + ", carts=" + carts
+				+ ", items=" + items + "]";
+	}
+	
+	
+	
 
 }

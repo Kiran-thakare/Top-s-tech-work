@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,22 +78,22 @@
 					<div class="col-12">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mt-50">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item"><a href="#">Furniture</a></li>
-								<li class="breadcrumb-item"><a href="#">Chairs</a></li>
-								<li class="breadcrumb-item active" aria-current="page">white
-									modern chair</li>
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item"><a href="shop">Shop</a></li>
+								<li class="breadcrumb-item"><a href="productDetails">ProductDetails</a></li>
+								<!-- <li class="breadcrumb-item active" aria-current="page">white
+									modern chair</li> -->
 							</ol>
 						</nav>
 					</div>
 				</div>
-
+<c:forEach items="${productbyid}" var="p">
 				<div class="row">
 					<div class="col-12 col-lg-7">
 						<div class="single_product_thumb">
 							<div id="product_details_slider" class="carousel slide"
 								data-ride="carousel">
-								<ol class="carousel-indicators">
+								<!-- <ol class="carousel-indicators">
 									<li class="active" data-target="#product_details_slider"
 										data-slide-to="0"
 										style="background-image: url(img/product-img/pro-big-1.jpg);">
@@ -106,30 +107,12 @@
 									<li data-target="#product_details_slider" data-slide-to="3"
 										style="background-image: url(img/product-img/pro-big-4.jpg);">
 									</li>
-								</ol>
+								</ol> -->
 								<div class="carousel-inner">
 									<div class="carousel-item active">
 										<a class="gallery_img" href="img/product-img/pro-big-1.jpg">
 											<img class="d-block w-100"
-											src="img/product-img/pro-big-1.jpg" alt="First slide">
-										</a>
-									</div>
-									<div class="carousel-item">
-										<a class="gallery_img" href="img/product-img/pro-big-2.jpg">
-											<img class="d-block w-100"
-											src="img/product-img/pro-big-2.jpg" alt="Second slide">
-										</a>
-									</div>
-									<div class="carousel-item">
-										<a class="gallery_img" href="img/product-img/pro-big-3.jpg">
-											<img class="d-block w-100"
-											src="img/product-img/pro-big-3.jpg" alt="Third slide">
-										</a>
-									</div>
-									<div class="carousel-item">
-										<a class="gallery_img" href="img/product-img/pro-big-4.jpg">
-											<img class="d-block w-100"
-											src="img/product-img/pro-big-4.jpg" alt="Fourth slide">
+											src="img/${p.getProductImage()}" alt="First slide">
 										</a>
 									</div>
 								</div>
@@ -141,9 +124,9 @@
 							<!-- Product Meta Data -->
 							<div class="product-meta-data">
 								<div class="line"></div>
-								<p class="product-price">$180</p>
+								<p class="product-price">${p.getProductPrice()}</p>
 								<a href="product-details.html">
-									<h6>White Modern Chair</h6>
+									<h6>${p.getProductName()}</h6>
 								</a>
 								<!-- Ratings & Review -->
 								<div
@@ -187,13 +170,16 @@
 											class="fa fa-caret-up" aria-hidden="true"></i></span>
 									</div>
 								</div>
-								<button type="submit" name="addtocart" value="5"
-									class="btn amado-btn">Add to cart</button>
+								<!-- <button type="submit" name="addtocart" value="5"
+									class="btn amado-btn">Add to cart</button> -->
+									
+									<a href="cart?pid=${p.getPid()}" class="btn amado-btn">Add to cart</a>
 							</form>
 
 						</div>
 					</div>
 				</div>
+</c:forEach>
 			</div>
 		</div>
 		<!-- Product Details Area End -->

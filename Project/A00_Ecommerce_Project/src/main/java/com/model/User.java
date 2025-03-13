@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String name;
 	private String email;
 	private String phone;
@@ -21,6 +21,9 @@ public class User {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Cart> cart;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Order> orders ;
 
 	public int getId() {
 		return id;
@@ -69,5 +72,15 @@ public class User {
 	public void setCart(List<Cart> cart) {
 		this.cart = cart;
 	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+	
+	
 
 }

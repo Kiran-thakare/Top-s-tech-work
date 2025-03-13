@@ -73,15 +73,15 @@
 							<h2>Login Form</h2>
 						</div>
 
-						<form action="#" method="post">
+						<form action="checkLogin" method="post">
 							<div class="row">
 								<div class="col-md-12 mb-3">
-									<input type="text" class="form-control" id="uname" value=""
-										placeholder="Username" required>
+									<input type="email" class="form-control" id="uname" value=""
+										placeholder="Enter Email" name="email" required>
 								</div>
 								<div class="col-md-12 mb-3">
-									<input type="text" class="form-control" id="email" value=""
-										placeholder="Email" required>
+									<input type="password" class="form-control" id="email" value=""
+										placeholder="Enter password" name="password" required>
 								</div>
 
 								<div class="col-12 mb-3">

@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,4 +60,18 @@ public class UserController {
 		return "registration";
 
 	}
+
+	@PostMapping("/checkLogin")
+	public String checkLogin(@RequestParam("email") String email, @RequestParam("password") String password) {
+
+		List<User> users = service.findByEmailOrPassword(email, password);
+
+		if (users != null) {
+			return "redirect:/";
+		}
+
+		return "redirect:/login";
+
+	}
+
 }
