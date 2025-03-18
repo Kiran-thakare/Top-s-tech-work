@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.model.User;
 import com.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 
@@ -62,15 +64,19 @@ public class UserController {
 	}
 
 	@PostMapping("/checkLogin")
-	public String checkLogin(@RequestParam("email") String email, @RequestParam("password") String password) {
+	public String checkLogin(@RequestParam("email") String email,@RequestParam("password")String pass, HttpSession session) {
 
-		List<User> users = service.findByEmailOrPassword(email, password);
+		User users = service.findByEmail(email,pass);
+		System.out.println(users);
 
-		if (users != null) {
-			return "redirect:/";
+		if (users==null) {
+			return "redirect:/login";
+
 		}
 
-		return "redirect:/login";
+		session.setAttribute("email", email);
+		session.setAttribute("pass", pass);
+		return "redirect:/";
 
 	}
 

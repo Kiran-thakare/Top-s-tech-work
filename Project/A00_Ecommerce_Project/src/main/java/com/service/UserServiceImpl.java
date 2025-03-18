@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> findByEmailOrPassword(String email, String password) {
+	public User findByEmail(String email,String password) {
 		// TODO Auto-generated method stub
-		return repo.findByEmailOrPassword(email, password);
+		return repo.findByEmailAndPassword(email,password);
 	}
 
 }

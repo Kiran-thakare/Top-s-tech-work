@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,53 +83,73 @@
 									<tr>
 										<th></th>
 										<th>Product Name</th>
+										<!-- <th>User Id</th> -->
 										<th>Price</th>
 										<th>Quantity</th>
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${productbyid}" var="p">
-									<tr>
-										<td class="cart_product_img"><a href="#"><img
-												src="img/${p.getProductImage()}" alt="Product"></a></td>
-										<td class="cart_product_desc">
-											<h5>${p.getProductName()}</h5>
-										</td>
-										<td class="price"><span>${p.getProductPrice()}</span></td>
-										<td class="qty">
-											<div class="qty-btn d-flex">
-												<p>Qty</p>
-												<div class="quantity">
-													<span class="qty-minus"
-														onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
-														class="fa fa-minus" aria-hidden="true"></i></span> <input
-														type="number" class="qty-text" id="qty" step="1" min="1"
-														max="300" name="quantity" value="1"> <span
-														class="qty-plus"
-														onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
-														class="fa fa-plus" aria-hidden="true"></i></span>
-												</div>
-											</div>
-										</td>
-									</tr>
-	</c:forEach>
+									<c:forEach items="${cart}" var="c">
+										<tr>
+											<td class="cart_product_img"><a href="#"><img
+													src="img/${c.getProduct().getProductImage()}" alt="Product"></a></td>
+											<td class="cart_product_desc">
+
+												<h5>${c.getProduct().getProductName()}</h5>
+											</td>
+
+
+											<%-- 	<td>${c.getUser().getId()}</td> --%>
+
+
+											<td class="price"><span>${c.getProduct().getProductPrice()}</span></td>
+
+											<td class="qty">
+												<div class="qty-btn d-flex">
+													<p>Qty</p>
+													<div class="quantity">
+														<span class="qty-minus"
+															onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i
+															class="fa fa-minus" aria-hidden="true"></i></span> <input
+															type="number" class="qty-text" id="qty" step="1" min="1"
+															max="300" name="quantity" value="${c.getQty()}">
+														<span class="qty-plus"
+															onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i
+															class="fa fa-plus" aria-hidden="true"></i></span>
+													</div>
+
+												</div> <a href="remove?cid=${c.getCartId()} "
+												class="btn btn-danger mt-2 d-flex justify-content-center">Cancel</a>
+											</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
 					</div>
+
 					<div class="col-12 col-lg-4">
 						<div class="cart-summary">
 							<h5>Cart Total</h5>
+							<c:set var="total" value="0" />
+							<c:forEach items="${cart}" var="ct">
+								<c:set var="total"
+									value="${total+ ct.getProduct().getProductPrice()* ct.getQty() }" />
+							</c:forEach>
+
 							<ul class="summary-table">
-								<li><span>subtotal:</span> <span>$140.00</span></li>
-								<li><span>delivery:</span> <span>Free</span></li>
-								<li><span>total:</span> <span>$140.00</span></li>
+
+								<li><span>subtotal:</span> <span>${total}</span></li>
+								<li><span>delivery:</span> <span>₹40</span></li>
+								<li><span>total:</span> <span>${total+40 }</span></li>
 							</ul>
+
 							<div class="cart-btn mt-100">
-								<a href="cart.html" class="btn amado-btn w-100">Checkout</a>
+								<a href="checkout" class="btn amado-btn w-100">Checkout</a>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>

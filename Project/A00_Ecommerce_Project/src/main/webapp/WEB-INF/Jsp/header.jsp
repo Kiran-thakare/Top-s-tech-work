@@ -28,8 +28,9 @@
 	</nav>
 	<!-- Button Group -->
 	<div class="amado-btn-group mt-30 mb-100">
-		<a href="#" class="btn amado-btn mb-15">%Discount%</a> <a href="#"
-			class="btn amado-btn active">New this week</a>
+		<a href="#" class="btn amado-btn mb-15">%Discount%</a> 
+		<a href="logout"
+			class="btn amado-btn active">Logout</a>
 	</div>
 	<!-- Cart Menu -->
 	<div class="cart-fav-search mb-100">

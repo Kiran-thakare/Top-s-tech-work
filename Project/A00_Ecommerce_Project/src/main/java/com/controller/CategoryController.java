@@ -46,5 +46,14 @@ public class CategoryController {
 		model.addAttribute("categories", service.allCategory());
 		return "category";
 	}
+	
+	@GetMapping("/search")
+	public String SearchCategory(@RequestParam("cid") int id) {
+		
+		
+		
+		return "redirect:/shop";
+		
+	}
 
 }

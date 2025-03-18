@@ -81,7 +81,7 @@
 				<div class="catagories-menu">
 					<ul>
 						<c:forEach items="${allCategory}" var="dt">
-							<li class="active"><a href="#">${dt.getCategoryName()}</a></li>
+							<li class="active"><a href="search?cid=${dt.getCategoryId()}">${dt.getCategoryName()}</a></li>
 						</c:forEach>
 					</ul>
 				</div>

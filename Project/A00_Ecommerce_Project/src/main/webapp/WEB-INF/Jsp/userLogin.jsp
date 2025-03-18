@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,6 +73,9 @@
 						<div class="cart-title text-center">
 							<h2>Login Form</h2>
 						</div>
+						<c:if test="${not empty error}">
+							<h3 class="text-danger text-center">${error}</h3>
+						</c:if>
 
 						<form action="checkLogin" method="post">
 							<div class="row">

@@ -14,6 +14,6 @@ public interface UserService {
 
 	public void deleteUserById(int id);
 	
-	public List<User> findByEmailOrPassword(String email,String password);
+	public User findByEmail(String email ,String password);
 
 }
