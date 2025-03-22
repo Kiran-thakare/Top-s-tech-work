@@ -19,17 +19,21 @@ public class User {
 	private String phone;
 	private String password;
 
+	private String address;
+
+	private int pincode;
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Cart> cart;
-	
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Order> orders ;
+	private List<Order> orders;
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -81,13 +85,26 @@ public class User {
 		this.orders = orders;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
 				+ ", cart=" + cart + ", orders=" + orders + "]";
 	}
-	
-	
-	
 
 }

@@ -1,14 +1,21 @@
 package com.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.service.OrderService;
+
 @Controller
 
 public class AdminController {
+
+	@Autowired
+	OrderService service;
 
 	@GetMapping("/admin")
 	public String adminLogin() {
@@ -22,10 +29,9 @@ public class AdminController {
 
 	}
 
-	
-
 	@GetMapping("/order")
-	public String Order() {
+	public String Order(Model model) {
+		model.addAttribute("orders", service.getallOrders());
 		return "order";
 
 	}

@@ -270,7 +270,10 @@
 													<th>Id</th>
 													<th>Name</th>
 													<th>Email</th>
+													<th>Address</th>
+													<th>Pin code</th>
 													<th>Phone</th>
+
 													<th colspan="2" class="text-center">Action</th>
 												</tr>
 											</thead>
@@ -281,6 +284,8 @@
 														<td>${u.getId()}</td>
 														<td>${u.getName()}</td>
 														<td>${u.getEmail()}</td>
+														<td>${u.getAddress()}</td>
+														<td>${u.getPincode()}</td>
 														<td>${u.getPhone()}</td>
 														<td><a href="deletee?did=${u.getId()}"
 															class="btn btn-danger">DELETE</a></td>
@@ -303,7 +308,7 @@
 				</div>
 				<!-- content-wrapper ends -->
 				<!-- partial:partials/_footer.html -->
-				
+
 				<!-- partial -->
 			</div>
 			<!-- main-panel ends -->

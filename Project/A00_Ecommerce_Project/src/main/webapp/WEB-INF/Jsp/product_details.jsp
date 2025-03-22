@@ -149,10 +149,7 @@
 								</div>
 
 								<div class="short_overview my-5">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Aliquid quae eveniet culpa officia quidem mollitia
-										impedit iste asperiores nisi reprehenderit consequatur, autem,
-										nostrum pariatur enim?</p>
+									<p>${p.getProductDescription()}</p>
 								</div>
 
 								<!-- Add to Cart Form -->

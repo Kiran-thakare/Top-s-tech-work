@@ -86,9 +86,22 @@
 										value="${user.email }" placeholder="Email" required>
 								</div>
 								<div class="col-12 mb-3">
-									<input type="number" class="form-control" id="phone"
-										name="phone" placeholder="Phone Number" value="${user.phone}">
+									<input type="tel" class="form-control" id="phone" name="phone"
+										placeholder="Phone Number" value="${user.phone}">
 								</div>
+
+								<div class="col-12 mb-3">
+									<input type="text" class="form-control" id="phone"
+										name="address" placeholder="Enter Addresss"
+										value="${user.address}">
+								</div>
+
+								<div class="col-12 mb-3">
+									<input type="text" class="form-control" id="phone"
+										name="pincode" placeholder="Enter Pincode"
+										value="${user.pincode}">
+								</div>
+
 								<div class="col-12 mb-3">
 									<input type="password" class="form-control" id="password"
 										placeholder="Password" value="${user.password}"

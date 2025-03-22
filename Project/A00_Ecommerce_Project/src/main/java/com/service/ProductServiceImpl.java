@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.model.Category;
 import com.model.Product;
 import com.repo.ProductRepo;
 
@@ -36,6 +37,18 @@ public class ProductServiceImpl implements ProductService{
 	public void deleteById(int id) {
 		repo.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Product> findByCategory(Category category) {
+		// TODO Auto-generated method stub
+		return repo.findByCategory(category);
+	}
+
+	@Override
+	public List<Product> findByProductName(String productName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

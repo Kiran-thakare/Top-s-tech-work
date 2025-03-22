@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model.Cart;
+import com.model.Category;
+import com.model.Order;
 import com.model.Product;
 import com.model.User;
 import com.service.CartService;
 import com.service.CategoryService;
+import com.service.OrderService;
 import com.service.ProductService;
 import com.service.UserService;
 
@@ -36,14 +39,11 @@ public class HomeController {
 	@Autowired
 	CartService cartService;
 
-	@GetMapping("/")
-	public String index(Model model, HttpSession session) {
+	@Autowired
+	OrderService orderService;
 
-		String userEmail = (String) session.getAttribute("email");
-		if (userEmail == null) {
-			model.addAttribute("error", "Do You Not Acceess Without Login Homepage");
-			return "redirect:/login";
-		}
+	@GetMapping("/")
+	public String index(Model model) {
 
 		model.addAttribute("products", productService.allProducts());
 		return "index";
@@ -54,6 +54,17 @@ public class HomeController {
 	public String shop(Model model) {
 		model.addAttribute("allCategory", service.allCategory());
 		model.addAttribute("products", productService.allProducts());
+		return "shop";
+
+	}
+
+	@GetMapping("/search")
+	public String SearchCategory(@RequestParam("cid") int id, Model model) {
+
+		Category cat = service.categoryById(id);
+		model.addAttribute("allCategory", service.allCategory());
+		model.addAttribute("products", productService.findByCategory(cat));
+
 		return "shop";
 
 	}
@@ -70,51 +81,20 @@ public class HomeController {
 
 	}
 
-	@GetMapping("/cart")
-	public String cart(Model model) {
-
-		model.addAttribute("cart", cartService.allCartItems());
-
-		return "cart";
-
-	}
-
-	@GetMapping("/remove")
-	public String removeCart(@RequestParam("cid") int id) {
-
-		cartService.deleteById(id);
-
-		return "redirect:/cart";
-
-	}
-	
-
-	@PostMapping("/addcart")
-	public String addCart(@RequestParam("pid") int id, @RequestParam("quantity") int qty, HttpSession session,
-			@ModelAttribute("cart") Cart c) {
-		String email = (String) session.getAttribute("email");
-		String pass = (String) session.getAttribute("pass");
-		User u = (User) userService.findByEmail(email, pass);
-
-		c.setProduct(productService.productById(id));
-		c.setUser(userService.getUserById(u.getId()));
-		c.setQty(qty);
-
-		cartService.addOrUpdateCart(c);
-
-		System.out.println(id + "   " + qty + "    " + email + " " + u.getId());
-
-		return "redirect:/cart";
-	}
-
 	@GetMapping("/checkout")
-	public String checkout() {
+	public String checkout(HttpSession session, Model model) {
+
+		User u = (User) session.getAttribute("user");
+		List<Cart> byUser = cartService.findByUser(u);
+
+		model.addAttribute("cart", byUser);
 		return "checkout";
 
 	}
 
 	@GetMapping("/login")
 	public String userLogin() {
+
 		return "userLogin";
 
 	}
@@ -124,6 +104,15 @@ public class HomeController {
 
 		session.invalidate();
 		return "redirect:/";
+
+	}
+
+	@GetMapping("/userorder")
+	public String userOrders(Model model, HttpSession session) {
+		User u = (User) session.getAttribute("user");
+		List<Order> orderByUser = orderService.findByUser(u);
+		model.addAttribute("orders", orderByUser);
+		return "userorder";
 
 	}
 

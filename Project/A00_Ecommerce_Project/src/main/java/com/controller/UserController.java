@@ -76,6 +76,8 @@ public class UserController {
 
 		session.setAttribute("email", email);
 		session.setAttribute("pass", pass);
+		session.setAttribute("user", users);
+		
 		return "redirect:/";
 
 	}

@@ -287,6 +287,13 @@
 												id="exampleInputName1" placeholder=" Product Name"
 												value="${product.productName}">
 										</div>
+
+										<div class="form-group">
+											<label for="exampleInputName1">Product Name</label> <input
+												type="text" class="form-control" name="description"
+												id="exampleInputName1" placeholder=" Product Description "
+												value="${product.productDescription}">
+										</div>
 										<div class="form-group">
 											<label for="exampleInputName1">Product Price</label> <input
 												type="text" class="form-control" name="price"
@@ -328,6 +335,7 @@
 												<tr>
 													<th>ProductId</th>
 													<th>Product Name</th>
+													<th>Product Description</th>
 													<th>Price</th>
 													<th>Quantity</th>
 													<th>Category</th>
@@ -340,6 +348,7 @@
 													<tr>
 														<td>${pro.getPid()}</td>
 														<td>${pro.getProductName()}</td>
+														<td>${pro.getProductDescription()}</td>
 														<td>${pro.getProductPrice()}</td>
 														<td>${pro.getProductQty()}</td>
 														<td>${pro.getCategory().getCategoryName()}</td>

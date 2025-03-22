@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model.Category;
 import com.service.CategoryService;
+import com.service.ProductService;
 
 @Controller
 public class CategoryController {
 	@Autowired
 	CategoryService service;
+	@Autowired
+	ProductService productService;
 
 	@GetMapping("/category")
 	public String category(Model model) {
@@ -41,19 +44,12 @@ public class CategoryController {
 
 	@GetMapping("/edit")
 	public String categoryByid(@RequestParam("cid") int id, Model model) {
-		
+
 		model.addAttribute("category", service.categoryById(id));
 		model.addAttribute("categories", service.allCategory());
 		return "category";
 	}
+
 	
-	@GetMapping("/search")
-	public String SearchCategory(@RequestParam("cid") int id) {
-		
-		
-		
-		return "redirect:/shop";
-		
-	}
 
 }

@@ -210,6 +210,7 @@
 
 				<div class="row">
 					<c:forEach items="${products}" var="p">
+					
 						<!-- Single Product Area -->
 						<div class="col-12 col-sm-6 col-md-12 col-xl-6">
 							<div class="single-product-wrapper">

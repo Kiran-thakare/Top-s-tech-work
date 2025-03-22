@@ -17,10 +17,9 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pid;
 	private String productName;
+	private String productDescription;
 	private int productQty;
 	private double productPrice;
-	
-	
 	private String productImage;
 
 	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
@@ -46,6 +45,14 @@ public class Product {
 
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+
+	public String getProductDescription() {
+		return productDescription;
+	}
+
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
 	}
 
 	public int getProductQty() {
@@ -102,8 +109,5 @@ public class Product {
 				+ productPrice + ", productImage=" + productImage + ", category=" + category + ", carts=" + carts
 				+ ", items=" + items + "]";
 	}
-	
-	
-	
 
 }

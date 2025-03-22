@@ -128,28 +128,48 @@
 						</div>
 					</div>
 
-					<div class="col-12 col-lg-4">
-						<div class="cart-summary">
-							<h5>Cart Total</h5>
-							<c:set var="total" value="0" />
-							<c:forEach items="${cart}" var="ct">
-								<c:set var="total"
-									value="${total+ ct.getProduct().getProductPrice()* ct.getQty() }" />
-							</c:forEach>
+					<div class="cart-summary">
+						<h5>Cart Total</h5>
+						<c:set var="total" value="0" />
+						<c:forEach items="${cart}" var="ct">
+							<c:set var="total"
+								value="${total + ct.getProduct().getProductPrice() * ct.getQty()}" />
+						</c:forEach>
 
-							<ul class="summary-table">
+						<ul class="summary-table">
+							<li><span>subtotal:</span> <span>${total}</span></li>
+							<li><span>delivery:</span> <span>₹40</span></li>
+							<li><span>total:</span> <span id="amt">${total + 40}</span></li>
+						</ul>
 
-								<li><span>subtotal:</span> <span>${total}</span></li>
-								<li><span>delivery:</span> <span>₹40</span></li>
-								<li><span>total:</span> <span>${total+40 }</span></li>
-							</ul>
+						<div class="payment-method">
+							<!-- Payment Form -->
+							<form action="" method="post">
+								<div class="custom-control custom-radio mr-sm-2">
+									<input type="radio" class="custom-control-input" id="cod"
+										name="paymentMethod" value="COD" checked
+										onclick="toggleButtons()"> <label
+										class="custom-control-label" for="cod">Cash on
+										Delivery</label>
+								</div>
 
-							<div class="cart-btn mt-100">
-								<a href="checkout" class="btn amado-btn w-100">Checkout</a>
-							</div>
+								<div class="custom-control custom-radio mr-sm-2">
+									<input type="radio" class="custom-control-input" id="paypal"
+										name="paymentMethod" value="PayPal" onclick="toggleButtons()">
+									<label class="custom-control-label" for="paypal">PayPal
+										<img class="ml-15" src="img/core-img/paypal.png" alt="">
+									</label>
+								</div>
+
+
+							</form>
+						</div>
+
+						<div class="cart-btn mt-4">
+							<button id="checkoutBtn" class="btn amado-btn w-100">Checkout</button>
+
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -194,6 +214,67 @@
 
 	<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
+
+	<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+	<script>
+		document.getElementById('checkoutBtn').onclick = function(e) {
+
+			e.preventDefault();
+			var amt = $("#amt").text().trim();
+			$.get("payment", {amt}, function(rs) {
+				alert(rs)
+
+				const data = JSON.parse(rs)
+
+				var options = {
+					"key" : "rzp_test_FtWVVt6YTsOyuV", // Enter the Key ID generated from the Dashboard
+					"amount" : data.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+					"currency" : "INR",
+					"name" : "Kiran Thakare",
+					"description" : "Tops Techano",
+					"image" : "https://example.com/your_logo",
+					"order_id" : data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+					"handler" : function(response) {
+						/* alert(response.razorpay_payment_id);
+						alert(response.razorpay_order_id);
+						alert(response.razorpay_signature)  */
+						var oid=response.razorpay_payment_id;
+						$.get("addorder",{oid},function(rt){
+							alert(rt)
+						})
+					},
+					"prefill" : {
+						"name" : "Gaurav Kumar",
+						"email" : "gaurav.kumar@example.com",
+						"contact" : "9000090000"
+					},
+					"notes" : {
+						"address" : "Razorpay Corporate Office"
+					},
+					"theme" : {
+						"color" : "#3399cc"
+					}
+				};
+				var rzp1 = new Razorpay(options);
+				rzp1.on('payment.failed', function(response) {
+					alert(response.error.code);
+					alert(response.error.description);
+					alert(response.error.source);
+					alert(response.error.step);
+					alert(response.error.reason);
+					alert(response.error.metadata.order_id);
+					alert(response.error.metadata.payment_id);
+				});
+				rzp1.open();
+			})
+
+			
+		}
+	</script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+		crossorigin="anonymous"></script>
+
 	<!-- Popper js -->
 	<script src="js/popper.min.js"></script>
 	<!-- Bootstrap js -->
